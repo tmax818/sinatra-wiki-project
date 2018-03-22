@@ -11,4 +11,30 @@ class ApplicationController < Sinatra::Base
     erb :welcome
   end
 
+  get '/new' do
+  erb :new
+end
+
+post '/new' do
+
+end
+
+get '/:title' do
+  erb :show
+end
+
+get '/:title/edit' do
+  @title = params[:title]
+  @content = page_content(@title)
+  erb :edit
+end
+
+put '/:title' do
+
+end
+
+delete '/:title' do
+  redirect '/'
+end
+
 end

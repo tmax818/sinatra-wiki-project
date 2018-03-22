@@ -13,10 +13,13 @@
 
   /* --- Welcome Page Styles --- */
   body {
-    background-color: lightblue;
+    background-color: #edeff0;
+    font-family: "Helvetica", Arial, sans-serif;
+    padding: 40px;
+    text-align: center;
     color: #333;
-    font-family: Sans-Serif;
-    line-height: 18px;
+    font-size: 18px;
+  }
   }
 
   .wrapper {
