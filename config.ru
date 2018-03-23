@@ -6,6 +6,6 @@ end
 
 use Rack::MethodOverride
 
-use PageController
-use UserController
+use PagesController
+use UsersController
 run ApplicationController
