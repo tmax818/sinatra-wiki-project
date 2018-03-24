@@ -8,19 +8,26 @@ use Rack::Flash
 
   post '/users/signup' do
     @user = User.new(params)
-      if @user.save
+     if @user.save
        session[:id] = @user.id
-       else
-         redirect '/users/signup'
-       end
-
+       erb :'users/test'
+     else
+       puts "you fucked up"
+     redirect "/users/signup"
+   end
   end
 
   ############### login ########################
 
-  get "/users/login" do
-    "user.login"
+  get '/users/login' do
+    erb :'users/login'
   end
+
+  post '/users/login' do
+    @user = User.find_by(username: params[:username])
+    binding.pry
+  end
+
 
 ########### helpers ####################
 
