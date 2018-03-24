@@ -4,5 +4,8 @@
   <input type="text" name="username" value="">
   <input type="text" name="password" value="">
   <input type="submit" name="" value="Signup">
-
 </form>
+
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
