@@ -1,5 +1,8 @@
+require 'rack-flash'
+
 class UsersController < ApplicationController
-use Rack::Flash
+  # enable :sessions
+  # use Rack::Flash
 ################ signup #####################
 
   get '/users/signup' do
@@ -12,12 +15,13 @@ use Rack::Flash
        session[:id] = @user.id
        erb :'users/test'
      else
-       puts "you fucked up"
+     flash[:message] = "Successfully created song."
      redirect "/users/signup"
+     puts flash[:message]
    end
   end
 
-  ############### login ########################
+  ############### login ################
 
   get '/users/login' do
     erb :'users/login'
@@ -25,7 +29,14 @@ use Rack::Flash
 
   post '/users/login' do
     @user = User.find_by(username: params[:username])
+
+    if @user and @user.authenticate(params[:password])
+      session[:id] = @user.id
+      erb :"/users/test"
+    else
+      redirect "/users/login"
     binding.pry
+    end
   end
 
 
