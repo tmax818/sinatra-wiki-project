@@ -1,0 +1,8 @@
+<h1>Welcome <%=@user.username%></h1>
+
+<% @user.pages.each do |p| %>
+<p>Title: <%= p.title %>  Content: <%= p.content %></p>
+<br>
+<% end %>
+
+<a href="/pages/<%= session[:id] %>/new">Create New Page</a>
