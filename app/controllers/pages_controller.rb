@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
 enable :sessions
-############## create and read?? ################
+############## create (Crud) ################
 
 get '/pages/:id/new' do
   @user = User.find(params[:id])
@@ -11,10 +11,18 @@ post '/pages/:id' do
   @user = User.find(params[:id])
   @page = Page.new(title: params[:title], content: params[:content], user_id: params[:id])
   @page.save
-  erb :'pages/show'
+  redirect "/pages/#{@user.id}"
 end
 
-################# update crUd #############
+############ read (cRud) #############
+
+get '/pages/:id' do
+  @user = User.find(params[:id])
+  erb :'pages/index'
+end
+
+
+################# update (crUd) #############
 
 get '/pages/:id/edit' do
   @page = Page.find(params[:id])
@@ -25,7 +33,16 @@ end
 patch '/pages/:id/edit' do
   @page = Page.find(params[:id])
   @page.update(content: params[:content], title: params[:title])
-  binding.pry
+  redirect "/pages/#{@page.id}"
+end
+
+########### delete (cruD) #############
+
+delete '/pages/:id/edit' do
+  @page = Page.find(params[:id])
+  i = @page.user_id
+  @page.destroy
+  redirect "/pages/#{i}"
 end
 
 ########### helpers ####################

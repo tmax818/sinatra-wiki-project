@@ -2,7 +2,24 @@ class UsersController < ApplicationController
   enable :sessions
   use Rack::Flash
 
-################ signup #####################
+  ############### login ################
+
+  get '/users/login' do
+    erb :'users/login'
+  end
+
+  post '/users/login' do
+    @user = User.find_by(username: params[:username])
+    if @user and @user.authenticate(params[:password])
+      session[:id] = @user.id
+      redirect "/pages/#{@user.id}"
+    else
+       flash[:message] = "Please enter username and password."
+      redirect "/users/login"
+    end
+  end
+
+############ signup ###########
 
   get '/users/signup' do
     erb :'users/signup'
@@ -20,22 +37,7 @@ class UsersController < ApplicationController
    end
   end
 
-  ############### login ################
 
-  get '/users/login' do
-    erb :'users/login'
-  end
-
-  post '/users/login' do
-    @user = User.find_by(username: params[:username])
-    if @user and @user.authenticate(params[:password])
-      session[:id] = @user.id
-      erb :"/users/show"
-    else
-       flash[:message] = "Please enter username and password."
-      redirect "/users/login"
-    end
-  end
 
 
 ########### helpers ####################
