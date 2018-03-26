@@ -18,8 +18,14 @@ end
 
 ################# update crUd #############
 
-get '/pages/edit' do
+get '/pages/:id/edit' do
+  @page = Page.find(params[:id])
+    #binding.pry
   erb :'pages/edit'
+end
+
+patch '/pages/:id/edit' do
+  binding.pry
 end
 
 ########### helpers ####################

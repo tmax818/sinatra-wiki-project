@@ -1,13 +1,13 @@
 <h1>Login Page</h1>
 
 <% if flash.has?(:message) %>
-<%= flash[:message] %>
+<h3>  <%= flash[:message] %> </h3>
 <% end %>
 <br>
 <form class="" action="/users/login" method="post">
   <label for="username">Username</label>
   <input type="text" name="username" value="" id="username">
   <label for="password">Password</label>
-  <input type="text" name="password" value="" id="password"> 
-  <input type="submit" name="" value="Login">
+  <input type="text" name="password" value="" id="password">
+  <input class="btn" type="submit" name="" value="Login">
 </form>

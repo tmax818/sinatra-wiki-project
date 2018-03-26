@@ -2,7 +2,7 @@
 
 <% @user.pages.each do |p| %>
 <p>Title: <%= p.title %>  Content: <%= p.content %></p>
-<br>
+<!-- add edit link  -->
 <% end %>
 
 <a href="/pages/<%= session[:id] %>/new">Create New Page</a>
