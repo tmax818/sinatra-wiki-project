@@ -4,7 +4,6 @@ enable :sessions
 
 get '/pages/:id/new' do
   @user = User.find(params[:id])
-    #binding.pry
     erb :'pages/new'
 end
 
@@ -12,7 +11,6 @@ post '/pages/:id' do
   @user = User.find(params[:id])
   @page = Page.new(title: params[:title], content: params[:content], user_id: params[:id])
   @page.save
-  #binding.pry
   erb :'pages/show'
 end
 
@@ -20,11 +18,13 @@ end
 
 get '/pages/:id/edit' do
   @page = Page.find(params[:id])
-    #binding.pry
+  #binding.pry
   erb :'pages/edit'
 end
 
 patch '/pages/:id/edit' do
+  @page = Page.find(params[:id])
+  @page.update(content: params[:content], title: params[:title])
   binding.pry
 end
 

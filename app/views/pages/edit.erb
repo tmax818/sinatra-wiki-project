@@ -1,14 +1,12 @@
 <h1> Edit Page <%= @page.title %> </h1>
 
-
-
-
 <div class="">
-<form class="" action="/pages/<%= @page.user_id%>/edit" method="post">
+<form class="" action="/pages/<%= @page.id%>/edit" method="post">
     <input type="hidden" name="_method" value="patch">
-    <br>
+    <label for="title">Title</label>
+    <input type="text" name="title" value="<%= @page.title %>" id="title">
     <label for="content">Content</label>
-    <textarea name="content" value="" rows="8" cols="80" id="content"><%= @content %></textarea>
+    <textarea name="content" rows="8" cols="80" id="content"><%= @page.content %></textarea>
     <input type="submit" name="" value="Edit">
 </form>
 </div>
