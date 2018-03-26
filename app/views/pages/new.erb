@@ -1,3 +1,5 @@
+
+<% if current_user.id == params[:id].to_i %>
 <h1>Create new pages for <%= @user.username %></h1>
 <div class="">
 <form class="" action="/pages/<%= @user.id %>" method="post">
@@ -10,3 +12,6 @@
     <input type="submit" name="" value="Save">
 </form>
 </div>
+<% else %>
+<h1>You must be logged in to view this page! Nice try!</h1>
+<% end %>
