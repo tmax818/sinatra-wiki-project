@@ -18,6 +18,7 @@ end
 
 get '/pages/:id' do
   @user = User.find(params[:id])
+  puts params
   erb :'pages/index'
 end
 
@@ -32,16 +33,19 @@ end
 
 patch '/pages/:id/edit' do
   @page = Page.find(params[:id])
+  #binding.pry
   @page.update(content: params[:content], title: params[:title])
-  redirect "/pages/#{@page.id}"
+  flash[:message] = "Page edited."
+  redirect "/pages/#{@page.user_id}"
 end
 
 ########### delete (cruD) #############
 
-delete '/pages/:id/edit' do
+delete '/pages/:id/delete' do
   @page = Page.find(params[:id])
   i = @page.user_id
   @page.destroy
+  flash[:message] = "Page deleted."
   redirect "/pages/#{i}"
 end
 

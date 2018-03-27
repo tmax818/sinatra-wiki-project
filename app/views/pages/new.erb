@@ -1,6 +1,6 @@
 
 <% if current_user.id == params[:id].to_i %>
-<h1>Create new pages for <%= @user.username %></h1>
+<h1>New page for<%= @user.username %></h1>
 <div class="">
 <form class="" action="/pages/<%= @user.id %>" method="post">
     <label for="title">Title</label>

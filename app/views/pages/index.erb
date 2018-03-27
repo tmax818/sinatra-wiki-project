@@ -1,4 +1,9 @@
-<h1>Welcome <%=@user.username%></h1>
+
+<h1>Welcome <%=@user.username%>!</h1>
+
+<% if flash.has?(:message) %>
+<h3>  <%= flash[:message] %> </h3>
+<% end %>
 
 <% @user.pages.each do |p| %>
 <p>Title: <%= p.title %>  Content: <%= p.content %></p>

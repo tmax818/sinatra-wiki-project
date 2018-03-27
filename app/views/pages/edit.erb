@@ -8,10 +8,11 @@
     <label for="content">Content</label>
     <textarea name="content" rows="8" cols="80" id="content"><%= @page.content %></textarea>
     <input type="submit" name="" value="Edit">
+</form>
 
-    <form class="" action="/pages/<%= @page.id %>" method="post">
+    <form class="" action="/pages/<%= @page.id %>/delete" method="post">
       <input type="hidden" name="_method" value="delete">
       <input type="submit" name="" value="Delete This Page">
     </form>
-</form>
+
 </div>
