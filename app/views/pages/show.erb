@@ -1,11 +1,15 @@
 
+show.erb
 
-<h1><%= @page.title %></h1>
+<h3> Welcome <%= @user.username %></h3>
 
-<h4><%= @page.content %></h4>
+<% binding.pry %>
 
+
+
+<hr>
 <div class="">
-  <a href="/pages/<%= @page.id %>/edit">Edit This Page</a>
-
+  <a href="#">Edit This Page</a>
+<a href="/pages/new">Create New Page</a>
 
 </div>

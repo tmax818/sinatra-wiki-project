@@ -1,8 +1,14 @@
-<h1>Welcome <%=@user.username%></h1>
+show.erb
 
-<% @user.pages.each do |p| %>
-<p>Title: <%= p.title %>  Content: <%= p.content %></p>
-<a href="/pages/<%= p.id%>/edit">Edit Page</a>
+
+
+<h1>Homepage for <%= current_user.username %></h1>
+
+<% current_user.pages.each do |p| %>
+<%= p.title %>
+<%= p.content %>
 <% end %>
 
-<a href="/pages/<%= @user.id %>/new">Create New Page</a>
+<hr>
+<a href="/pages/new">Create New Page</a>
+<a href="/pages/#{current_user.id}">Edit Current Pages</a>

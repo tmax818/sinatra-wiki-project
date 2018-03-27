@@ -2,36 +2,42 @@ class PagesController < ApplicationController
 enable :sessions
 ############## create (Crud) ################
 
-get '/pages/:id/new' do
-  @user = User.find(params[:id])
+#Render the form for creating a new page
+get '/pages/new' do
     erb :'pages/new'
 end
 
-post '/pages/:id' do
-  @user = User.find(params[:id])
-  @page = Page.new(title: params[:title], content: params[:content], user_id: params[:id])
+#Create a new page
+post '/pages' do
+  @page = Page.new(params)
   @page.save
-  redirect "/pages/#{@user.id}"
+  redirect "/pages/#{@page.id}"
 end
 
 ############ read (cRud) #############
-
+#Show a single page
 get '/pages/:id' do
-  @user = User.find(params[:id])
+  @page = Page.find(params[:id])
   puts params
   erb :'pages/index'
+end
+#Show all pages
+get '/pages' do
+  @user = User.find(session[:id])
+  #binding.pry
+  erb :'pages/show'
 end
 
 
 ################# update (crUd) #############
-
+#Render the form for editing a page
 get '/pages/:id/edit' do
   @page = Page.find(params[:id])
   #binding.pry
   erb :'pages/edit'
 end
-
-patch '/pages/:id/edit' do
+#Update a page
+patch '/pages/:id' do
   @page = Page.find(params[:id])
   #binding.pry
   @page.update(content: params[:content], title: params[:title])
@@ -40,8 +46,8 @@ patch '/pages/:id/edit' do
 end
 
 ########### delete (cruD) #############
-
-delete '/pages/:id/delete' do
+#Delete a page
+delete '/pages/:id' do
   @page = Page.find(params[:id])
   i = @page.user_id
   @page.destroy

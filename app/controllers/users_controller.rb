@@ -24,7 +24,7 @@ class UsersController < ApplicationController
   ############### login ################
 
   get '/users/login' do
-    session.inspect
+    @user = User.find(session[:id])
     erb :'users/login'
   end
 
@@ -32,13 +32,18 @@ class UsersController < ApplicationController
     @user = User.find_by(username: params[:username])
     if @user and @user.authenticate(params[:password])
       session[:id] = @user.id
-      redirect "/pages/#{@user.id}"
+      redirect "/users"
     else
-       flash[:message] = "Please enter username and password."
+       flash[:message] = "Please enter a valid username and password."
       redirect "/users/login"
     end
   end
 
+############# homepage ###########
+
+get '/users' do
+  erb :'users/show'
+end
 
 
 ########### helpers ####################

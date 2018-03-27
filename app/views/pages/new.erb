@@ -1,13 +1,13 @@
+new.erb
 
-<% if current_user.id == params[:id].to_i %>
-<h1>New page for<%= @user.username %></h1>
+<% if current_user.id == session[:id] %>
+<h1>New page for <%= current_user.username %></h1>
 <div class="">
-<form class="" action="/pages/<%= @user.id %>" method="post">
-    <label for="title">Title</label>
+<form class="" action="/pages" method="post">
+    <label for="title">Title:</label>
     <input type="text" name="title" value="" id="title">
     <br>
-    <br>
-    <label for="content">Content</label>
+    <label for="content">Content:</label>
     <textarea name="content" value="" rows="8" cols="30" id="content"></textarea>
     <input type="submit" name="" value="Save">
 </form>

@@ -1,13 +1,20 @@
+<% if current_user.id == session[:id] %>
 
-<h1>Welcome <%=@user.username%>!</h1>
+<h1>Welcome!<%= current_user.username %></h1>
+
+index.erb
 
 <% if flash.has?(:message) %>
 <h3>  <%= flash[:message] %> </h3>
 <% end %>
 
-<% @user.pages.each do |p| %>
-<p>Title: <%= p.title %>  Content: <%= p.content %></p>
-<a href="/pages/<%= p.id%>/edit">Edit Page</a>
-<% end %>
 
-<a href="/pages/<%= @user.id %>/new">Create New Page</a>
+<a href="#">Edit Page</a>
+<a href="#">View Page</a>
+
+<br><br><hr>
+<a href="#">Create New Page</a>
+
+<% else %>
+<h1>You must be logged in to view this page! Nice try!</h1>
+<% end %>
