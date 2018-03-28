@@ -1,14 +1,11 @@
-show.erb
+users/show.erb
 
 
 
 <h1>Homepage for <%= current_user.username %></h1>
 
-<% current_user.pages.each do |p| %>
-<%= p.title %>
-<%= p.content %>
-<% end %>
+<h3>Instructions go here</h3>
 
 <hr>
 <a href="/pages/new">Create New Page</a>
-<a href="/pages/#{current_user.id}">Edit Current Pages</a>
+<a href="/pages">View Pages</a>

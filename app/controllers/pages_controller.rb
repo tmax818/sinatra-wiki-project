@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
 enable :sessions
-############## create (Crud) ################
+###### create (Crud) ########
 
 #Render the form for creating a new page
 get '/pages/new' do
@@ -10,26 +10,25 @@ end
 #Create a new page
 post '/pages' do
   @page = Page.new(params)
+  @page.user_id = session[:id]
   @page.save
-  redirect "/pages/#{@page.id}"
+  redirect "/pages"
 end
 
 ############ read (cRud) #############
 #Show a single page
 get '/pages/:id' do
   @page = Page.find(params[:id])
-  puts params
-  erb :'pages/index'
+  erb :'pages/show'
 end
 #Show all pages
 get '/pages' do
   @user = User.find(session[:id])
-  #binding.pry
-  erb :'pages/show'
+  erb :'pages/index'
 end
 
 
-################# update (crUd) #############
+############ update (crUd) #############
 #Render the form for editing a page
 get '/pages/:id/edit' do
   @page = Page.find(params[:id])
@@ -42,7 +41,7 @@ patch '/pages/:id' do
   #binding.pry
   @page.update(content: params[:content], title: params[:title])
   flash[:message] = "Page edited."
-  redirect "/pages/#{@page.user_id}"
+  redirect "/pages"
 end
 
 ########### delete (cruD) #############
@@ -52,7 +51,7 @@ delete '/pages/:id' do
   i = @page.user_id
   @page.destroy
   flash[:message] = "Page deleted."
-  redirect "/pages/#{i}"
+  redirect "/pages"
 end
 
 ########### helpers ####################

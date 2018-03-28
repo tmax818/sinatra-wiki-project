@@ -8,12 +8,16 @@ index.erb
 <h3>  <%= flash[:message] %> </h3>
 <% end %>
 
-
-<a href="#">Edit Page</a>
-<a href="#">View Page</a>
+<ul>
+<% current_user.pages.each do |p| %>
+<li> <p>Title:  <%= p.title %> </p>
+  <p>Content:   <%= p.content %>  </p>
+<a href="/pages/<%= p.id %>/edit">Edit Page</a>
+<% end %>
+</ul>
 
 <br><br><hr>
-<a href="#">Create New Page</a>
+<a href="/pages/new">Create New Page</a>
 
 <% else %>
 <h1>You must be logged in to view this page! Nice try!</h1>

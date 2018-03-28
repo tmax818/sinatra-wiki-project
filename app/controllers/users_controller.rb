@@ -17,14 +17,12 @@ class UsersController < ApplicationController
      else
     flash[:message] = "You must enter a valid username, email, and password!"
      redirect "/users/signup"
-     binding.pry
    end
   end
 
   ############### login ################
 
   get '/users/login' do
-    @user = User.find(session[:id])
     erb :'users/login'
   end
 
@@ -38,6 +36,18 @@ class UsersController < ApplicationController
       redirect "/users/login"
     end
   end
+
+  ########## logout #########
+
+  get '/users/logout' do
+     if logged_in?
+      session.clear
+      flash[:message] = "You've been logged out. Please enter a valid username and password."
+      redirect 'users/login'
+     else
+       redirect '/'
+     end
+   end
 
 ############# homepage ###########
 
