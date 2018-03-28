@@ -1,11 +1,9 @@
 <h1>New User Signup Page</h1>
 
-signup.erb
-
 <% if flash.has?(:message) %>
 <h3><%= flash[:message] %> </h3>
 <% end %>
-<br>
+
 <br>
 <form class="" action="/users/signup" method="post">
   <label for="username">Username</label>

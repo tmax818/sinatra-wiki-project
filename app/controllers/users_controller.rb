@@ -1,6 +1,5 @@
+
 class UsersController < ApplicationController
-  enable :sessions
-  use Rack::Flash
 
 
 ############ signup ###########
@@ -15,8 +14,8 @@ class UsersController < ApplicationController
        session[:id] = @user.id
        redirect "/users/login"
      else
-    flash[:message] = "You must enter a valid username, email, and password!"
-     redirect "/users/signup"
+       flash[:message] = "You must enter a valid username, email, and password!"
+       redirect '/users/signup'
    end
   end
 

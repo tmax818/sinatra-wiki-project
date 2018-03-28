@@ -1,6 +1,6 @@
-<% if current_user.id == session[:id] %>
+<% if current_user && logged_in? %>
 
-<h1>Welcome!<%= current_user.username %></h1>
+<h1>Welcome! <%= current_user.username %></h1>
 
 index.erb
 
@@ -13,11 +13,13 @@ index.erb
 <li> <p>Title:  <%= p.title %> </p>
   <p>Content:   <%= p.content %>  </p>
 <a href="/pages/<%= p.id %>/edit">Edit Page</a>
+<a href="/pages/<%= p.id %>">View Page</a>
 <% end %>
 </ul>
 
 <br><br><hr>
 <a href="/pages/new">Create New Page</a>
+<a href="/users/logout">Logout</a>
 
 <% else %>
 <h1>You must be logged in to view this page! Nice try!</h1>

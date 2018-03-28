@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-enable :sessions
+
 ###### create (Crud) ########
 
 #Render the form for creating a new page
