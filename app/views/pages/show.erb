@@ -1,4 +1,6 @@
 
+<% if logged_in? && current_user.id == @page.user_id %>
+
 pages/show.erb
 
 <h1> Welcome</h1>
@@ -8,9 +10,12 @@ pages/show.erb
 
 
 <hr>
-<div class="">
   <a href="/pages">Edit This Page</a>
 <a href="/pages/new">Create New Page</a>
 <a href="/users/logout">Logout</a>
 
-</div>
+
+<% else %>
+<h1>You must be logged in to view this page! Nice try!</h1>
+<a href="/users/login">Click here to Login</a>
+<% end %>

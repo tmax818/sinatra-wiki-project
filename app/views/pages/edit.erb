@@ -1,6 +1,9 @@
+
+<% if logged_in? && current_user.id == @page.user_id %>
+
 <h1> Edit Page <%= @page.title %> </h1>
 
-edit.erb 
+edit.erb
 
 <div class="">
 <form class="" action="/pages/<%= @page.id%>" method="post">
@@ -18,3 +21,9 @@ edit.erb
     </form>
 
 </div>
+
+
+<% else %>
+<h1>You must be logged in to view this page! Nice try!</h1>
+<a href="/users/login">Click here to Login</a>
+<% end %>

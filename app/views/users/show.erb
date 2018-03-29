@@ -1,6 +1,6 @@
 users/show.erb
 
-
+<% if logged_in? %>
 
 <h1>Homepage for <%= current_user.username %></h1>
 
@@ -10,3 +10,9 @@ users/show.erb
 <a href="/pages/new">Create New Page</a>
 <a href="/pages">View Pages</a>
 <a href="/users/logout">Logout</a>
+
+
+<% else %>
+<h1>You must be logged in to view this page! Nice try!</h1>
+<a href="/users/login">Click here to Login</a>
+<% end %>

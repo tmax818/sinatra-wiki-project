@@ -1,6 +1,6 @@
 new.erb
 
-<% if logged_in? && current_user %>
+<% if logged_in? && current_user.id == session[:id] %>
 
 <h1>New page for <%= current_user.username %></h1>
 <div class="">
@@ -14,5 +14,6 @@ new.erb
 </form>
 </div>
 <% else %>
-<h1>You must be logged in to view this page! Nice try!</h1>
+<h1>You must be logged in to view this page!</h1>
+<a href="/users/login">Click here to Login</a>
 <% end %>
