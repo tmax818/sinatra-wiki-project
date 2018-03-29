@@ -1,8 +1,8 @@
 <% if logged_in? && current_user.id == session[:id] %>
 
-<h1>Welcome! <%= current_user.username %></h1>
+<h1>Welcome! <%= current_user.username %> Click the WikiWord below to view page content</h1>
 
-index.erb
+index.erb <br>
 
 <% if flash.has?(:message) %>
 <h3>  <%= flash[:message] %> </h3>
@@ -10,10 +10,7 @@ index.erb
 
 
 <% current_user.pages.each do |p| %>
- <p>Title:  <%= p.title %> </p>
-  <p>Content:   <%= p.content %>  </p>
-<a href="/pages/<%= p.id %>/edit">Edit Page</a>
-<a href="/pages/<%= p.id %>">View Page</a>
+ <a href="/pages/<%= p.id %>"><%= p.wiki_wordify %></a><br>
 <% end %>
 
 

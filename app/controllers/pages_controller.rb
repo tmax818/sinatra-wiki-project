@@ -11,6 +11,7 @@ end
 post '/pages' do
   @page = Page.new(params)
   @page.user_id = session[:id]
+  @wiki = @page.wiki_wordify
   @page.save
   redirect "/pages"
 end
