@@ -1,6 +1,5 @@
 <h1>Login Page</h1>
 
-login.erb
 
 <% if flash.has?(:message) %>
 <h3>  <%= flash[:message] %> </h3>
@@ -11,7 +10,7 @@ login.erb
   <label for="username">Username</label>
   <input type="text" name="username" value="" id="username">
   <label for="password">Password</label>
-  <input type="text" name="password" value="" id="password">
+  <input type="password" name="password" value="" id="password">
   <hr>
   <input class="btn" type="submit" name="" value="Login">
 </form>
