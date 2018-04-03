@@ -1,7 +1,7 @@
 
 class UsersController < ApplicationController
 
-
+ 
 ############ signup ###########
 
   get '/users/signup' do
