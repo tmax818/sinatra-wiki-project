@@ -1,8 +1,6 @@
 
 <% if logged_in? && current_user.id == @page.user_id %>
 
-pages/show.erb
-
 <h1> Welcome. Click page link below to edit page.</h1>
 
 <a href="/pages/<%= @page.id %>/edit"><%= @page.wiki_wordify %></a>
@@ -11,8 +9,8 @@ pages/show.erb
 
 <hr>
 <a href="/pages/new">Create New Page</a>
+<a href="/pages">Homepage</a>
 <a href="/users/logout">Logout</a>
-
 
 <% else %>
 <h1>You must be logged in to view this page! Nice try!</h1>
