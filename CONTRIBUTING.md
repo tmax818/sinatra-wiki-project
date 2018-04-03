@@ -2,7 +2,7 @@
 
 I would be shocked and honored to receive a pull requests from anyone. By participating in this project, you agree to abide by the [code of conduct].
 
-[code of conduct]: see CODE_OF_CONDUCT.md
+[code of conduct]: /CODE_OF_CONDUCT.md
 
 Fork, then clone the repo:
 
