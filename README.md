@@ -1,5 +1,5 @@
 
-This is a Sinatra project based on a book by Andy Hunt, "Pragmatic Thinking & Learning: Refactor Your Wetware." Einstein was once asked how many feet are in a mile. Einstein's reply was "I don't know, why should I fill my brain with facts I can find in two minutes in any standard reference book?”
+This is a Sinatra project based on a book by Andy Hunt, "Pragmatic Thinking & Learning: Refactor Your Wetware." 
 
 The following passage from Hunt's book distills what I am trying to create in my Sinatra project:
 
