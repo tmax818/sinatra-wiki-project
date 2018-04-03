@@ -1,6 +1,6 @@
 # Contributing
 
-I would be shocked and honored to receive a pull requests from anyone. By participating in this project, you agree to abide by the [code of conduct].
+I would be honored to receive a pull requests from anyone. By participating in this project, you agree to abide by the [code of conduct].
 
 [code of conduct]: /CODE_OF_CONDUCT.md
 
@@ -12,19 +12,12 @@ Set up your machine:
 
     ./bin/setup
 
-
-
 Push to your fork and [submit a pull request][pr].
 
 [pr]: https://github.com/tmax818/sinatra-wiki-project/compare/
 
-Thank you so much for your contributions.
+Thank you so much for your contributions. I am grateful for any and all constructive input!
 
-Some things that will increase the chance that your pull request is accepted:
+* Please write a [good commit message][commit].
 
-* Write tests.
-* Follow our [style guide][style].
-* Write a [good commit message][commit].
-
-[style]: https://github.com/thoughtbot/guides/tree/master/style
 [commit]: http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
