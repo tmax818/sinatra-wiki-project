@@ -1,12 +1,4 @@
-
 <h1>Welcome! <%= current_user.username %> Click the WikiWord below to view page content</h1>
-
-
-
-<% if flash.has?(:message) %>
-<h3>  <%= flash[:message] %> </h3>
-<% end %>
-
 
 <% current_user.pages.each do |p| %>
  <a href="/pages/<%= p.id %>"><%= p.wiki_wordify %></a><br>

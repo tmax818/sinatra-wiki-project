@@ -4,7 +4,13 @@ class PagesController < ApplicationController
 
 #Render the form for creating a new page
 get '/pages/new' do
+  if logged_in?
     erb :'pages/new'
+  else
+    flash[:message] = "Please login to view this page."
+    redirect "/users/login"
+  end
+
 end
 
 #Create a new page
@@ -15,8 +21,8 @@ post '/pages' do
   if @page.save
   redirect "/pages"
 else
-  flash[:message] = "must have unique title."
-  redirect "/pages"
+  flash[:message] = "must have unique title and content cannot be blank."
+  redirect "/pages/new"
 end
 end
 
@@ -24,12 +30,23 @@ end
 #Show a single page
 get '/pages/:id' do
   @page = Page.find(params[:id])
-  erb :'pages/show'
+  if logged_in? && current_user.id == @page.user_id
+    erb :'pages/show'
+  else
+    flash[:message] = "Please login to view this page."
+    redirect "/users/login"
+  end
+
 end
 #Show all pages
 get '/pages' do
-  @user = User.find(session[:id])
-  erb :'pages/index'
+    if logged_in?
+      @user = User.find(session[:id])
+      erb :'pages/index'
+  else
+    flash[:message] = "Please login to view this page."
+    redirect "/users/login"
+  end
 end
 
 
@@ -40,6 +57,7 @@ get '/pages/:id/edit' do
 if logged_in? && current_user.id == @page.user_id
   erb :'pages/edit'
 else
+  flash[:message] = "Please login to view this page."
   redirect "/users/login"
 end
 
@@ -48,8 +66,13 @@ end
 patch '/pages/:id' do
   @page = Page.find(params[:id])
   @page.update(content: params[:content], title: params[:title])
-  flash[:message] = "Page edited."
-  redirect "/pages"
+  if @page.save
+    flash[:message] = "Page edited."
+    redirect "/pages"
+  else
+    flash[:message] = "You have already used that title!"
+    redirect "/pages/#{@page.id}/edit"
+  end
 end
 
 ########### delete (cruD) #############
