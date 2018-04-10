@@ -19,30 +19,30 @@ post '/pages' do
   @page.user_id = session[:id]
   @wiki = @page.wiki_wordify
   if @page.save
-  redirect "/pages"
-else
-  flash[:message] = "must have unique title and content cannot be blank."
-  redirect "/pages/new"
-end
+    redirect "/pages"
+  else
+    flash[:message] = "must have unique title and content cannot be blank."
+    redirect "/pages/new"
+  end
 end
 
 ############ read (cRud) #############
 #Show a single page
 get '/pages/:id' do
-  @page = Page.find(params[:id])
+      @page = Page.find(params[:id])
   if logged_in? && current_user.id == @page.user_id
-    erb :'pages/show'
+      erb :'pages/show'
   else
     flash[:message] = "Please login to view this page."
     redirect "/users/login"
   end
-
 end
+
 #Show all pages
 get '/pages' do
-    if logged_in?
-      @user = User.find(session[:id])
-      erb :'pages/index'
+  if logged_in?
+    @user = User.find(session[:id])
+    erb :'pages/index'
   else
     flash[:message] = "Please login to view this page."
     redirect "/users/login"
@@ -54,14 +54,14 @@ end
 #Render the form for editing a page
 get '/pages/:id/edit' do
   @page = Page.find(params[:id])
-if logged_in? && current_user.id == @page.user_id
-  erb :'pages/edit'
-else
-  flash[:message] = "Please login to view this page."
-  redirect "/users/login"
+  if logged_in? && current_user.id == @page.user_id
+    erb :'pages/edit'
+  else
+    flash[:message] = "Please login to view this page."
+    redirect "/users/login"
+  end
 end
 
-end
 #Update a page
 patch '/pages/:id' do
   @page = Page.find(params[:id])
@@ -87,13 +87,13 @@ end
 
 ########### helpers ####################
 
-helpers do
-  def logged_in?
-    !!session[:id]
-  end
+  helpers do
+    def logged_in?
+      !!session[:id]
+    end
 
-  def current_user
-    User.find(session[:id])
+    def current_user
+      User.find(session[:id])
+    end
   end
-end
 end
