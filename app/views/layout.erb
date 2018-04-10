@@ -6,6 +6,11 @@
 </head>
 <body>
       <h2>Sinatra Wiki Project</h2>
+
+      <% if flash.has?(:message) %>
+      <h3>  <%= flash[:message] %> </h3>
+      <% end %>
+      
       <%= yield %>
 
     <footer>

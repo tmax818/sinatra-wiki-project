@@ -12,8 +12,12 @@ post '/pages' do
   @page = Page.new(params)
   @page.user_id = session[:id]
   @wiki = @page.wiki_wordify
-  @page.save
+  if @page.save
   redirect "/pages"
+else
+  flash[:message] = "must have unique title."
+  redirect "/pages"
+end
 end
 
 ############ read (cRud) #############
@@ -33,13 +37,16 @@ end
 #Render the form for editing a page
 get '/pages/:id/edit' do
   @page = Page.find(params[:id])
-  #binding.pry
+if logged_in? && current_user.id == @page.user_id
   erb :'pages/edit'
+else
+  redirect "/users/login"
+end
+
 end
 #Update a page
 patch '/pages/:id' do
   @page = Page.find(params[:id])
-  #binding.pry
   @page.update(content: params[:content], title: params[:title])
   flash[:message] = "Page edited."
   redirect "/pages"

@@ -1,4 +1,3 @@
-<% if logged_in? && current_user.id == session[:id] %>
 
 <h1>Welcome! <%= current_user.username %> Click the WikiWord below to view page content</h1>
 
@@ -17,8 +16,3 @@
 <br><br><hr>
 <a href="/pages/new">Create New Page</a>
 <a href="/users/logout">Logout</a>
-
-<% else %>
-<h1>You must be logged in to view this page!</h1>
-<a href="/users/login">Click here to Login</a>
-<% end %>

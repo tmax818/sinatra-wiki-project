@@ -1,6 +1,4 @@
 
-<% if logged_in? && current_user.id == @page.user_id %>
-
 <h1> Welcome. Click page link below to edit page.</h1>
 
 <a href="/pages/<%= @page.id %>/edit"><%= @page.wiki_wordify %></a>
@@ -11,8 +9,3 @@
 <a href="/pages/new">Create New Page</a>
 <a href="/pages">Homepage</a>
 <a href="/users/logout">Logout</a>
-
-<% else %>
-<h1>You must be logged in to view this page!</h1>
-<a href="/users/login">Click here to Login</a>
-<% end %>
